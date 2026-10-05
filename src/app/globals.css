@@ -14,8 +14,12 @@
   --color-kor-gold: var(--kor-gold);
   --color-kor-dark-gray: var(--kor-dark-gray);
   --color-kor-light-gray: var(--kor-light-gray);
-  --font-display: var(--font-questrial), var(--font-noto-sans-tc), sans-serif;
-  --font-sans: var(--font-questrial), var(--font-noto-sans-tc), sans-serif;
+  /* English headings: ITC Avant Garde; Chinese glyphs fall through to Noto Sans */
+  --font-display: var(--font-itc), var(--font-noto-sans), sans-serif;
+  /* English body: Proxima Nova; Chinese glyphs fall through to Noto Sans */
+  --font-sans: var(--font-proxima-nova), var(--font-noto-sans), sans-serif;
+  /* Chinese titles and body */
+  --font-cjk: var(--font-noto-sans), sans-serif;
 }
 
 body {

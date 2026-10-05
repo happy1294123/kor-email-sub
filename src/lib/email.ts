@@ -1,6 +1,29 @@
 const BREVO_ENDPOINT = "https://api.brevo.com/v3/smtp/email";
 const LOGO_PATH = "/logo/kor_logo.png";
 
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://qrcode-system-img.kor-asia.com").replace(/\/$/, "");
+const FONT_CJK = "'Noto Sans CJK TC','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif";
+const FONT_HEADING = `'ITC Avant Garde Gothic','Avant Garde',${FONT_CJK}`;
+const FONT_BODY = `'Proxima Nova',Arial,${FONT_CJK}`;
+
+// Email clients that support web fonts (Apple Mail, iOS Mail) load these; others use the fallbacks.
+const FONT_FACE_CSS = [
+  ["ITC Avant Garde Gothic", 400, "ITCAvantGardeGothic-Book.otf", "opentype"],
+  ["ITC Avant Garde Gothic", 500, "ITCAvantGardeGothic-Medium.otf", "opentype"],
+  ["ITC Avant Garde Gothic", 700, "ITCAvantGardeGothic-Bold.otf", "opentype"],
+  ["Proxima Nova", 300, "ProximaNova-Light.otf", "opentype"],
+  ["Proxima Nova", 400, "ProximaNova-Regular.otf", "opentype"],
+  ["Proxima Nova", 700, "ProximaNova-Bold.otf", "opentype"],
+  ["Noto Sans CJK TC", 300, "NotoSansCJKtc-Light.woff", "woff"],
+  ["Noto Sans CJK TC", 500, "NotoSansCJKtc-Medium.woff", "woff"],
+  ["Noto Sans CJK TC", 700, "NotoSansCJKtc-Bold.woff", "woff"],
+]
+  .map(
+    ([family, weight, file, format]) =>
+      `@font-face{font-family:'${family}';font-weight:${weight};font-style:normal;src:url('${SITE_URL}/fonts/${file}') format('${format}');}`,
+  )
+  .join("\n");
+
 function buildHtml(logoUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -9,6 +32,9 @@ function buildHtml(logoUrl: string): string {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
 <title>KOR Taipei</title>
+<style>
+${FONT_FACE_CSS}
+</style>
 </head>
 <body style="margin:0;padding:0;background:#000000;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#000000;">
@@ -26,8 +52,8 @@ function buildHtml(logoUrl: string): string {
           </td>
         </tr>
         <tr>
-          <td align="center" style="padding:36px 24px 8px;font-family:'Helvetica Neue',Arial,'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif;color:#ffffff;">
-            <h1 style="margin:0 0 16px;font-size:22px;line-height:1.4;font-weight:500;letter-spacing:1px;color:#b2a477;">感謝您的訂閱</h1>
+          <td align="center" style="padding:36px 24px 8px;font-family:${FONT_CJK};color:#ffffff;">
+            <h1 style="margin:0 0 16px;font-family:${FONT_CJK};font-size:22px;line-height:1.4;font-weight:500;letter-spacing:1px;color:#b2a477;">感謝您的訂閱</h1>
             <p style="margin:0;font-size:15px;line-height:1.8;color:#ffffff;">
               您已成功訂閱 KOR Taipei 的最新消息。<br />
               我們將第一時間通知您最新活動、消息與專屬邀請。
@@ -40,8 +66,8 @@ function buildHtml(logoUrl: string): string {
           </td>
         </tr>
         <tr>
-          <td align="center" style="padding:0 24px 8px;font-family:'Helvetica Neue',Arial,sans-serif;color:#ffffff;">
-            <h1 style="margin:0 0 16px;font-size:22px;line-height:1.4;font-weight:500;letter-spacing:1px;color:#b2a477;">Thank You for Subscribing</h1>
+          <td align="center" style="padding:0 24px 8px;font-family:${FONT_BODY};color:#ffffff;">
+            <h1 style="margin:0 0 16px;font-family:${FONT_HEADING};font-size:22px;line-height:1.4;font-weight:500;letter-spacing:1px;color:#b2a477;">Thank You for Subscribing</h1>
             <p style="margin:0;font-size:15px;line-height:1.8;color:#ffffff;">
               You&rsquo;re now subscribed to KOR Taipei updates.<br />
               You&rsquo;ll be the first to know about our latest events, news, and exclusive invitations.
@@ -49,7 +75,7 @@ function buildHtml(logoUrl: string): string {
           </td>
         </tr>
         <tr>
-          <td align="center" style="padding:40px 24px 0;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:1.6;color:#a7a9ac;">
+          <td align="center" style="padding:40px 24px 0;font-family:${FONT_BODY};font-size:12px;line-height:1.6;color:#a7a9ac;">
             KOR Taipei<br />
             此信件為系統自動發送，請勿直接回覆。<br />
             This is an automated message. Please do not reply.

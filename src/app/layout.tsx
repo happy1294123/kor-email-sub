@@ -1,23 +1,34 @@
 import type { Metadata } from "next";
-import { Jost, Noto_Sans_TC, Questrial } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const itc = localFont({
+  variable: "--font-itc",
+  src: [
+    { path: "../font-family/ITC Avant Garde Gothic CE Book.otf", weight: "400" },
+    { path: "../font-family/ITC Avant Garde Gothic Medium.otf", weight: "500" },
+    { path: "../font-family/ITC Avant Garde Gothic Bold.otf", weight: "700" },
+  ],
 });
 
-const questrial = Questrial({
-  variable: "--font-questrial",
-  subsets: ["latin"],
-  weight: "400",
+const proximaNova = localFont({
+  variable: "--font-proxima-nova",
+  src: [
+    { path: "../font-family/ProximaNova-Light.otf", weight: "300" },
+    { path: "../font-family/ProximaNova-Regular.otf", weight: "400" },
+    { path: "../font-family/ProximaNova-Bold.otf", weight: "700" },
+  ],
 });
 
-const notoSansTC = Noto_Sans_TC({
-  variable: "--font-noto-sans-tc",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+// Subsetted copies of NotoSansCJKtc (the full OTFs are ~15MB each); regenerate
+// with pyftsubset if new Chinese characters are added.
+const notoSans = localFont({
+  variable: "--font-noto-sans",
+  src: [
+    { path: "../font-family/web/NotoSansCJKtc-Light.woff", weight: "300" },
+    { path: "../font-family/web/NotoSansCJKtc-Medium.woff", weight: "500" },
+    { path: "../font-family/web/NotoSansCJKtc-Bold.woff", weight: "700" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="zh-Hant"
-      className={`${jost.variable} ${questrial.variable} ${notoSansTC.variable} h-full antialiased`}
+      className={`${itc.variable} ${proximaNova.variable} ${notoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-white">
         {children}

@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     await sendWelcomeEmail(email);
     return NextResponse.json({
       ok: true,
-      message: "訂閱成功，感謝您的加入！\nSubscribed successfully — thank you for joining!",
+      message: "訂閱成功，感謝您的加入！\nSubscribed successfully\nthank you for joining!",
     });
   } catch (error) {
     console.error("Failed to add subscriber:", error);

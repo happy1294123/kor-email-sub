@@ -48,20 +48,20 @@ export default function SubscribeForm() {
 					placeholder="your@email.com"
 					aria-label="Email"
 					disabled={status === "loading"}
-					className="w-full bg-transparent border border-kor-dark-gray focus:border-kor-gold rounded-xl px-5 h-[50px] font-display text-sm text-white placeholder:text-kor-dark-gray outline-none transition-colors disabled:opacity-50"
+					className="w-full bg-transparent border border-kor-dark-gray focus:border-kor-gold rounded-xl px-5 h-[50px] font-sans text-sm text-white placeholder:text-kor-dark-gray outline-none transition-colors disabled:opacity-50"
 				/>
 				<button
 					type="submit"
 					disabled={status === "loading"}
-					className="flex items-center justify-center gap-3 w-full h-[50px] rounded-xl bg-kor-gold text-black font-bold text-sm transition-opacity hover:opacity-85 disabled:opacity-50"
+					className="flex items-center justify-center gap-3 w-full h-[50px] rounded-xl bg-kor-gold text-black font-sans font-bold text-sm transition-opacity hover:opacity-85 disabled:opacity-50"
 				>
 					{status === "loading" ? (
 						"loading…"
 					) : (
 						<>
-							<span className="tracking-[0.1em]">訂閱</span>
+							<span className="font-cjk tracking-[0.1em]">訂閱</span>
 							<span aria-hidden className="h-3.5 w-px bg-black/40" />
-							<span className="font-display tracking-[0.15em] uppercase">Subscribe</span>
+							<span className="font-sans tracking-[0.15em] uppercase">Subscribe</span>
 						</>
 					)}
 				</button>
