@@ -59,7 +59,7 @@ export default function SubscribeForm() {
 						"loading…"
 					) : (
 						<>
-							<span className="font-cjk tracking-[0.1em]">訂閱</span>
+							<span className="font-cjk tracking-[0.1em] mb-1">訂閱</span>
 							<span aria-hidden className="h-3.5 w-px bg-black/40" />
 							<span className="font-sans tracking-[0.15em] uppercase">Subscribe</span>
 						</>
