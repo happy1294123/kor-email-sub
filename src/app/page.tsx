@@ -27,7 +27,7 @@ export default function Home() {
 
         <section className="mt-12 flex flex-col items-center gap-6 font-light">
           <p className="text-base sm:text-lg tracking-[0.08em] text-white">
-            感謝客人對 KOR 的長期支持，
+            感謝您對 KOR 的長期支持，
           </p>
           <p className="text-base sm:text-lg tracking-[0.08em] leading-[2.1] text-kor-light-gray">
             若想收到未來的第一手消息，
